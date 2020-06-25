@@ -30,6 +30,9 @@ class SetupTabletTest : SharedTabletSetup() {
 
     @Test
     fun tabletSetupTestWithWrongValue() {
+
+        plugAndPlayInterceptor.plugIn(SetupTabletMockInterceptor())
+
         // Section 1
         onView(withId(R.id.text_email_input)).perform(typeText("wrong@test.com"))
         onView(withId(R.id.text_password_input)).perform(typeText("test"))

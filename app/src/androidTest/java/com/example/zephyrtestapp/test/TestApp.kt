@@ -10,10 +10,13 @@ import com.example.zephyrtestapp.MyApp
  */
 class TestApp : MyApp() {
 
+    lateinit var component: TestAppComponent
+
     override fun initDagger() {
-        DaggerTestAppComponent.builder()
+        component = DaggerTestAppComponent.builder()
             .application(this)
             .build()
-            .inject(this)
+
+        component.inject(this)
     }
 }

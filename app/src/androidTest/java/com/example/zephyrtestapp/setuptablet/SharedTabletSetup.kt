@@ -7,7 +7,7 @@ import androidx.test.rule.ActivityTestRule
 import com.example.zephyrtestapp.EspressoIdlingResource
 import com.example.zephyrtestapp.MyApp
 import com.example.zephyrtestapp.network.PlugAndPlayInterceptor
-import com.example.zephyrtestapp.test.DaggerTestAppComponent
+import com.example.zephyrtestapp.test.TestApp
 import com.example.zephyrtestapp.ui.MainActivity
 import okhttp3.Interceptor
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
@@ -42,10 +42,7 @@ open class SharedTabletSetup {
          */
         IdlingRegistry.getInstance().register(EspressoIdlingResource.countingIdlingResource)
 
-        val appInjector = DaggerTestAppComponent.builder()
-            .application(app)
-            .build()
-        appInjector.inject(this)
+        (app as TestApp).component.inject(this)
 
         val intent = Intent(
             InstrumentationRegistry.getInstrumentation()
