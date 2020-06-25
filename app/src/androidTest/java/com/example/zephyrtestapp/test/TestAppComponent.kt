@@ -9,7 +9,7 @@ import dagger.android.support.AndroidSupportInjectionModule
 
 
 @AppScope
-@Component(modules = [AndroidSupportInjectionModule::class, UiModule::class, ViewModelModule::class, MockNetwrokModule::class])
+@Component(modules = [AndroidSupportInjectionModule::class, UiModule::class, ViewModelModule::class, MockNetworkModule::class])
 interface TestAppComponent : AppComponent {
 
     @Component.Builder

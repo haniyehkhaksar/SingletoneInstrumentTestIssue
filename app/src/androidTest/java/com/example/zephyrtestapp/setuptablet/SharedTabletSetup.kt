@@ -6,6 +6,7 @@ import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.rule.ActivityTestRule
 import com.example.zephyrtestapp.EspressoIdlingResource
 import com.example.zephyrtestapp.MyApp
+import com.example.zephyrtestapp.network.PlugAndPlayInterceptor
 import com.example.zephyrtestapp.test.DaggerTestAppComponent
 import com.example.zephyrtestapp.ui.MainActivity
 import okhttp3.Interceptor
@@ -20,14 +21,15 @@ import org.json.JSONObject
 import org.junit.After
 import org.junit.Before
 import org.junit.Rule
+import javax.inject.Inject
 
 open class SharedTabletSetup {
 
     private val instrumentation = InstrumentationRegistry.getInstrumentation()
     private val app: MyApp get() = instrumentation.targetContext.applicationContext as MyApp
 
-//    @Inject
-//    lateinit var plugAndPlayInterceptor: PlugAndPlayInterceptor
+    @Inject
+    lateinit var plugAndPlayInterceptor: PlugAndPlayInterceptor
 
     @get:Rule
     val activityRule = ActivityTestRule(MainActivity::class.java, true, false)
@@ -59,7 +61,7 @@ open class SharedTabletSetup {
          * Unregister your Idling Resource so it can be garbage collected and does not leak any memory.
          */
         IdlingRegistry.getInstance().unregister(EspressoIdlingResource.countingIdlingResource)
-//        plugAndPlayInterceptor.unPlug()
+        plugAndPlayInterceptor.unPlug()
     }
 
 }

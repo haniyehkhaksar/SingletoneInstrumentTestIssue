@@ -6,7 +6,6 @@ import com.example.zephyrtestapp.network.MyApiService
 import com.example.zephyrtestapp.network.MyApiServiceCaller
 import com.example.zephyrtestapp.network.MyRepository
 import com.example.zephyrtestapp.network.PlugAndPlayInterceptor
-import com.example.zephyrtestapp.setuptablet.SetupTabletMockInterceptor
 import com.example.zephyrtestapp.test.TestApp
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
@@ -21,7 +20,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
 @Module
-object MockNetwrokModule {
+object MockNetworkModule {
 
     @Provides
     fun provideApplicationContext(application: TestApp): Context {
@@ -46,11 +45,10 @@ object MockNetwrokModule {
             .connectTimeout(10, TimeUnit.SECONDS)
             .readTimeout(10, TimeUnit.MINUTES)
             .writeTimeout(10, TimeUnit.MINUTES)
-            .addInterceptor(SetupTabletMockInterceptor())
 
-//        interceptors.forEach {
-//            builder.addInterceptor(it)
-//        }
+        interceptors.forEach {
+            builder.addInterceptor(it)
+        }
 
         return builder.build()
     }

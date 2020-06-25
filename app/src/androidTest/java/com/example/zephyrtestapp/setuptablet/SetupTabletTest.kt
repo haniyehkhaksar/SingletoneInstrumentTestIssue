@@ -14,7 +14,7 @@ class SetupTabletTest : SharedTabletSetup() {
     @Test
     fun tabletSetupTest() {
 
-//        plugAndPlayInterceptor.plugIn(SetupTabletMockInterceptor())
+        plugAndPlayInterceptor.plugIn(SetupTabletMockInterceptor())
 
         onView(withId(R.id.text_email_input)).perform(typeText("correct@test.com"))
 
