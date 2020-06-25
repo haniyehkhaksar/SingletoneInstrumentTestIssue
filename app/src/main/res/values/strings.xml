@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">ZephyrTestApp</string>
+    <string name="setup_msg">setup message</string>
+    <string name="user_name">username</string>
+    <string name="password">password</string>
+    <string name="submit">submit</string>
+</resources>
